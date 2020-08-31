@@ -4,8 +4,8 @@ import RPi.GPIO as GPIO
 from colorama import Fore
 
 PIN = 4
-MAX_TEMP = 61
-MIN_TEMP = 55
+MAX_TEMP = 63
+MIN_TEMP = 56
 FAN_STATUS = "OFF"
 TIMER = 10.0
 
@@ -26,7 +26,7 @@ def printit():
 		GPIO.output(PIN,GPIO.LOW)
 		FAN_STATUS = "OFF"
 
-	print("Sıcaklık {} derece. Fan durumu: {}".format(temp, FAN_STATUS))
+	print("C: {} | F: {}".format(temp, FAN_STATUS))
 
 
 printit()
