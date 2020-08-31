@@ -1,7 +1,6 @@
 import threading
 import os
 import RPi.GPIO as GPIO
-from colorama import Fore
 
 PIN = 4
 MAX_TEMP = 63
