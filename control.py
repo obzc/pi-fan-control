@@ -2,7 +2,7 @@ import threading
 import os
 import RPi.GPIO as GPIO
 
-PIN = 4
+PIN = 12
 MAX_TEMP = 63
 MIN_TEMP = 56
 FAN_STATUS = "OFF"
