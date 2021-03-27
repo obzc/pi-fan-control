@@ -3,8 +3,8 @@ import os
 import RPi.GPIO as GPIO
 
 PIN = 12
-MAX_TEMP = 63
-MIN_TEMP = 56
+MAX_TEMP = 69
+MIN_TEMP = 65
 FAN_STATUS = "OFF"
 TIMER = 10.0
 
@@ -15,19 +15,17 @@ GPIO.setup(PIN,GPIO.OUT)
 
 
 def printit():
-	global FAN_STATUS
-	threading.Timer(TIMER, printit).start()
-	temp = float(os.popen("vcgencmd measure_temp").readline().split('=')[1].split('\'')[0])
-	if temp > MAX_TEMP:
-		GPIO.output(PIN,GPIO.HIGH)
-		FAN_STATUS = "ON"
-	elif (temp < MIN_TEMP):
-		GPIO.output(PIN,GPIO.LOW)
-		FAN_STATUS = "OFF"
+        global FAN_STATUS
+        threading.Timer(TIMER, printit).start()
+        temp = float(os.popen("vcgencmd measure_temp").readline().split('=')[1].split('\'')[0])
+        if temp > MAX_TEMP:
+                GPIO.output(PIN,GPIO.HIGH)
+                FAN_STATUS = "ON"
+        elif (temp < MIN_TEMP):
+                GPIO.output(PIN,GPIO.LOW)
+                FAN_STATUS = "OFF"
 
-	print("C: {} | F: {}".format(temp, FAN_STATUS))
+        print("C: {} | F: {}".format(temp, FAN_STATUS))
 
 
 printit()
-
-
